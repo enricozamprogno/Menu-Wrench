@@ -317,7 +317,8 @@ class modMenuwrenchHelper
 	{
 
 		$browserNav = property_exists($item, 'browserNav') ? $this->setBrowsernav($item) : '';
-		$title      = property_exists($item, 'menu_image') && $item->menu_image != '' ? $this->setImage($item) : $item->title;
+		$title      = '<span class="'.$item->type.' level'.$item->level.'">'
+			.(property_exists($item, 'menu_image') && $item->menu_image != '' ? $this->setImage($item) : $item->title) . '</span>';
 
 		switch ($item->type)
 		{
@@ -326,7 +327,8 @@ class modMenuwrenchHelper
 				break;
 
 			case 'separator':
-				$output = $itemOpenTag . '<span class="separator">' . $title . '</span>';
+			case 'heading':
+				$output = $itemOpenTag . $title ;
 				break;
 
 			case 'url' :
