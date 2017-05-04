@@ -104,7 +104,7 @@ class modMenuwrenchHelper
 			}
 
 			// Add image to item object if one is defined in the menu item's parameters
-			if ($item->params->get('menu_image', ''))
+			if (!is_null($item->params) && $item->params->get('menu_image', ''))
 			{
 				$item->menu_image = htmlspecialchars($item->params->get('menu_image', ''), ENT_COMPAT, 'UTF-8', false);
 			}
